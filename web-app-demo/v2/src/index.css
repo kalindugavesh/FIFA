@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0a0f1a;
+  color: white;
+}
+
+::selection {
+  background-color: rgba(251, 191, 36, 0.3);
+  color: white;
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(251, 191, 36, 0.4);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes dropdown {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fadeUp   { animation: fadeUp 0.5s ease-out both; }
+.animate-float    { animation: float 4s ease-in-out infinite; }
+.animate-dropdown { animation: dropdown 0.2s ease-out; }
+
+/* Staggered children */
+.animate-fadeUp > * { animation: fadeUp 0.4s ease-out both; }
+.animate-fadeUp > *:nth-child(1) { animation-delay: 0s; }
+.animate-fadeUp > *:nth-child(2) { animation-delay: 0.06s; }
+.animate-fadeUp > *:nth-child(3) { animation-delay: 0.12s; }
+.animate-fadeUp > *:nth-child(4) { animation-delay: 0.18s; }
+
+/* Scrollbar */
+.styled-scrollbar::-webkit-scrollbar { width: 5px; }
+.styled-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 4px; }
+.styled-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+.styled-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* Recharts overrides */
+.recharts-default-legend { margin-top: 8px !important; }
